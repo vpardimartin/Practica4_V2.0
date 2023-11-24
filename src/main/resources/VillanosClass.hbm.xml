@@ -4,9 +4,10 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="org.example.VillanosClass" table="villanos" schema="new_practica4_orm">
+    <class name="org.practica4.VillanosClass" table="villanos" schema="new_practica4_orm">
         <id name="villanoId">
             <column name="VillanoId" sql-type="int"/>
+            <generator class="identity"/>
         </id>
         <property name="nombreVillano">
             <column name="Nombre_villano" sql-type="varchar(255)"/>
@@ -38,10 +39,10 @@
         <property name="alias">
             <column name="Alias" sql-type="varchar(255)" not-null="true"/>
         </property>
-        <many-to-one name="poderesByPoderVillanoId" class="org.example.PoderesClass">
+        <many-to-one name="poderesByPoderVillanoId" class="org.practica4.PoderesClass">
             <column name="Poder_villano_id" not-null="true"/>
         </many-to-one>
-        <many-to-one name="escenariosByEscenarioFavoritoVillanoId" class="org.example.EscenariosClass">
+        <many-to-one name="escenariosByEscenarioFavoritoVillanoId" class="org.practica4.EscenariosClass">
             <column name="EscenarioFavorito_villano_id" not-null="true"/>
         </many-to-one>
     </class>

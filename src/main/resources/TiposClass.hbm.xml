@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="org.example.TiposClass" table="tipos" schema="new_practica4_orm">
+    <class name="org.practica4.TiposClass" table="tipos" schema="new_practica4_orm">
         <id name="tipoId">
             <column name="TipoId" sql-type="int"/>
         </id>
@@ -18,7 +18,7 @@
             <key>
                 <column name="Tipo_poder_id" not-null="true"/>
             </key>
-            <one-to-many not-found="ignore" class="org.example.PoderesClass"/>
+            <one-to-many not-found="ignore" class="org.practica4.PoderesClass"/>
         </set>
     </class>
 </hibernate-mapping>

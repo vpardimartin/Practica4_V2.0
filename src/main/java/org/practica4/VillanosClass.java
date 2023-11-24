@@ -1,4 +1,4 @@
-package org.example;
+package org.practica4;
 
 import java.util.Objects;
 

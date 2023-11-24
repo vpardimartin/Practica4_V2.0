@@ -4,9 +4,10 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="org.example.PoderesClass" table="poderes" schema="new_practica4_orm">
+    <class name="org.practica4.PoderesClass" table="poderes" schema="new_practica4_orm">
         <id name="poderId">
             <column name="PoderId" sql-type="int"/>
+            <generator class="identity"/>
         </id>
         <property name="nombrePoder">
             <column name="Nombre_poder" sql-type="varchar(255)"/>
@@ -23,20 +24,20 @@
         <property name="tipoEntidad">
             <column name="Tipo_entidad" sql-type="varchar(7)" length="7"/>
         </property>
-        <many-to-one name="tiposByTipoPoderId" class="org.example.TiposClass">
+        <many-to-one name="tiposByTipoPoderId" class="org.practica4.TiposClass">
             <column name="Tipo_poder_id" not-null="true"/>
         </many-to-one>
         <set name="heroesByPoderId" inverse="true">
             <key>
                 <column name="Poder_heroe_id" not-null="true"/>
             </key>
-            <one-to-many not-found="ignore" class="org.example.HeroesClass"/>
+            <one-to-many not-found="ignore" class="org.practica4.HeroesClass"/>
         </set>
         <set name="villanosByPoderId" inverse="true">
             <key>
                 <column name="Poder_villano_id" not-null="true"/>
             </key>
-            <one-to-many not-found="ignore" class="org.example.VillanosClass"/>
+            <one-to-many not-found="ignore" class="org.practica4.VillanosClass"/>
         </set>
     </class>
 </hibernate-mapping>

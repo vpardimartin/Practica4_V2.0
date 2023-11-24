@@ -1,4 +1,4 @@
-package org.example;
+package org.practica4;
 // package con el nombre que tengas, buscar en App
 
 import org.hibernate.Session;

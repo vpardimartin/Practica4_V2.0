@@ -4,18 +4,19 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="org.example.HeroesClass" table="heroes" schema="new_practica4_orm">
+    <class name="org.practica4.HeroesClass" table="heroes" schema="new_practica4_orm">
         <id name="heroesId">
             <column name="HeroesId" sql-type="int"/>
+            <generator class="identity"/>
         </id>
         <property name="nombreHeroe">
             <column name="Nombre_heroe" sql-type="varchar(255)"/>
         </property>
         <property name="poderHeroeId" insert="false" update="false">
-            <column name="Poder_heroe_id" sql-type="int" not-null="true"/>
+            <column name="Poder_heroe_id" sql-type="int" not-null="false"/>
         </property>
         <property name="escenarioFavoritoHeroeId" insert="false" update="false">
-            <column name="EscenarioFavorito_heroe_id" sql-type="int" not-null="true"/>
+            <column name="EscenarioFavorito_heroe_id" sql-type="int" not-null="false"/>
         </property>
         <property name="ataque">
             <column name="Ataque" sql-type="double" precision="-1" not-null="true"/>
@@ -38,10 +39,10 @@
         <property name="alias">
             <column name="Alias" sql-type="varchar(255)" not-null="true"/>
         </property>
-        <many-to-one name="poderesByPoderHeroeId" class="org.example.PoderesClass">
+        <many-to-one name="poderesByPoderHeroeId" class="org.practica4.PoderesClass">
             <column name="Poder_heroe_id" not-null="true"/>
         </many-to-one>
-        <many-to-one name="escenariosByEscenarioFavoritoHeroeId" class="org.example.EscenariosClass">
+        <many-to-one name="escenariosByEscenarioFavoritoHeroeId" class="org.practica4.EscenariosClass">
             <column name="EscenarioFavorito_heroe_id" not-null="true"/>
         </many-to-one>
     </class>
