@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.example.HeroesClass" table="heroes" schema="new_practica4_orm">
+        <id name="heroesId">
+            <column name="HeroesId" sql-type="int"/>
+        </id>
+        <property name="nombreHeroe">
+            <column name="Nombre_heroe" sql-type="varchar(255)"/>
+        </property>
+        <property name="poderHeroeId" insert="false" update="false">
+            <column name="Poder_heroe_id" sql-type="int" not-null="true"/>
+        </property>
+        <property name="escenarioFavoritoHeroeId" insert="false" update="false">
+            <column name="EscenarioFavorito_heroe_id" sql-type="int" not-null="true"/>
+        </property>
+        <property name="ataque">
+            <column name="Ataque" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+        <property name="defensa">
+            <column name="Defensa" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+        <property name="vida">
+            <column name="Vida" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+        <property name="nivel">
+            <column name="Nivel" sql-type="int" not-null="true"/>
+        </property>
+        <property name="fortalezas">
+            <column name="Fortalezas" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="debilidades">
+            <column name="Debilidades" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="alias">
+            <column name="Alias" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <many-to-one name="poderesByPoderHeroeId" class="org.example.PoderesClass">
+            <column name="Poder_heroe_id" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="escenariosByEscenarioFavoritoHeroeId" class="org.example.EscenariosClass">
+            <column name="EscenarioFavorito_heroe_id" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

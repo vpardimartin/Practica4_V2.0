@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.example.PoderesClass" table="poderes" schema="new_practica4_orm">
+        <id name="poderId">
+            <column name="PoderId" sql-type="int"/>
+        </id>
+        <property name="nombrePoder">
+            <column name="Nombre_poder" sql-type="varchar(255)"/>
+        </property>
+        <property name="descripcionPoder">
+            <column name="Descripcion_poder" sql-type="text" not-null="true"/>
+        </property>
+        <property name="tipoPoderId" insert="false" update="false">
+            <column name="Tipo_poder_id" sql-type="int" not-null="true" />
+        </property>
+        <property name="asignado">
+            <column name="Asignado" sql-type="tinyint(1)" not-null="true"/>
+        </property>
+        <property name="tipoEntidad">
+            <column name="Tipo_entidad" sql-type="varchar(7)" length="7"/>
+        </property>
+        <many-to-one name="tiposByTipoPoderId" class="org.example.TiposClass">
+            <column name="Tipo_poder_id" not-null="true"/>
+        </many-to-one>
+        <set name="heroesByPoderId" inverse="true">
+            <key>
+                <column name="Poder_heroe_id" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.example.HeroesClass"/>
+        </set>
+        <set name="villanosByPoderId" inverse="true">
+            <key>
+                <column name="Poder_villano_id" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.example.VillanosClass"/>
+        </set>
+    </class>
+</hibernate-mapping>

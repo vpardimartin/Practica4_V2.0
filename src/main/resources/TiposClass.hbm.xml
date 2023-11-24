@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.example.TiposClass" table="tipos" schema="new_practica4_orm">
+        <id name="tipoId">
+            <column name="TipoId" sql-type="int"/>
+        </id>
+        <property name="nombreTipo">
+            <column name="Nombre_tipo" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="descripcionTipo">
+            <column name="Descripcion_tipo" sql-type="text" not-null="true"/>
+        </property>
+        <set name="poderesByTipoId" inverse="true">
+            <key>
+                <column name="Tipo_poder_id" not-null="true"/>
+            </key>
+            <one-to-many not-found="ignore" class="org.example.PoderesClass"/>
+        </set>
+    </class>
+</hibernate-mapping>
